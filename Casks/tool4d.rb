@@ -1,11 +1,12 @@
 cask "tool4d" do
   version "21.0.100301"
-  sha256 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # sha256 du .tar.gz entier
 
   if Hardware::CPU.arm?
     url "https://product-download.4d.com/release/21.x/21.0/100301/mac/tool4d_arm64.tar.xz"
+    sha256 "e15500e59ead66abab6f8c592643bd2e648429aaa0df5b700bd898e2f6043b8b"
   else
     url "https://product-download.4d.com/release/21.x/21.0/100301/mac/tool4d_x86_64.tar.xz"
+    sha256 "acdd68536ea2dbf36ff8fca82ea449118b29638837e727bc3ccd63c6799c4666"
   end
 
   name "tool4d"
@@ -19,11 +20,9 @@ cask "tool4d" do
   binary "#{appdir}/tool4d.app/Contents/MacOS/tool4d", target: "tool4d"
 
   livecheck do
-    # Si tu veux que brew upgrade --cask détecte les nouvelles versions automatiquement
     url :url
     strategy :header_match
   end
 
-  # Optionnel : si tu veux nettoyer en désinstallation
   uninstall delete: "/Applications/tool4d.app"
 end
